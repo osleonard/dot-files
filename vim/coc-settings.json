@@ -1,0 +1,7 @@
+{
+	"metals.serverVersion": "0.10.0",
+	"codeLens.enable":true,
+	"coc.preferences.formatOnType": true,
+	"coc.preferences.formatOnSaveFiletypes": ["scala"],
+	"metals.statusBarEnabled": true
+}
