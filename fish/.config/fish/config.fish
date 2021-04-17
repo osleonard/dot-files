@@ -11,12 +11,14 @@ set fish_color_autosuggestion '#7d7d7d'
 set fish_color_command brcyan
 set fish_color_error '#ff6c6b'
 set fish_color_param brcyan
+
 set PATH $PATH (find ~/.sdkman/candidates/*/current/bin -maxdepth 0)
 
 ### Aliases
 alias k kubectl
 alias g git
 command -qv nvim && alias vim nvim
+
 
 [ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
 
