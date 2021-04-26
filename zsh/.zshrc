@@ -1,3 +1,10 @@
+
+# handy aliases
+
+alias g="git"
+alias k="kubectl"
+alias v="nvim"
+
 export SDKMAN_DIR="/Users/osleonard/.sdkman"
 [[ -s "/Users/osleonard/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/osleonard/.sdkman/bin/sdkman-init.sh"
 

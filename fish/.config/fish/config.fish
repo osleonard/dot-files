@@ -12,7 +12,7 @@ set fish_color_command brcyan
 set fish_color_error '#ff6c6b'
 set fish_color_param brcyan
 
-set PATH $PATH (find ~/.sdkman/candidates/*/current/bin -maxdepth 0)
+set theme_color_scheme gruvbox
 
 ### Aliases
 alias k kubectl
