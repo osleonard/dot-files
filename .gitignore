@@ -1,2 +1,8 @@
+.bloop/
+.metals/
+project/.bloop/
+project/metals.sbt
+project/project/
+
 vim/.vim/plugged
 vim/.vim/autoload
