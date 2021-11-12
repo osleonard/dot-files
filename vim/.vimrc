@@ -1,6 +1,9 @@
 unlet! skip_defaults_vim
 "source $VIMRUNTIME/defaults.vim
 
+" leader remap
+let mapleader = ","
+
 if filereadable(expand("~/.vim/plug.vim"))
   source ~/.vim/plug.vim
 endif
