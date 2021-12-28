@@ -18,3 +18,6 @@ autoload -U compinit && compinit
 
 export PATH=$PATH:$HOME/bin
 
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform
+eval "$(ssh-agent -s)"

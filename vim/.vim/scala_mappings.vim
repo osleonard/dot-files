@@ -2,8 +2,6 @@
 " ---- Scala settings ----
 " ------------------------
 au BufRead,BufNewFile *.sbt,*.sc set filetype=scala
-let g:scala_sort_across_groups=1
-let g:scala_first_party_namespaces='\(controllers\|views\|models\|util\|de.\)'
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -117,3 +115,6 @@ nnoremap <silent> <space>tc :<C-u>CocCommand metals.tvp metalsCompile<CR>
 nnoremap <silent> <space>tb :<C-u>CocCommand metals.tvp metalsBuild<CR>
 " Reveal current current class (trait or object) in Tree View 'metalsPackages'
 nnoremap <silent> <space>tf :<C-u>CocCommand metals.revealInTreeView metalsPackages<CR>
+
+nnoremap <silent> <space>f :<C-u>CocCommand metals.new-scala-file<CR>
+
