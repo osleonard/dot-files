@@ -1,0 +1,7 @@
+[user]
+    email = lakinmolayan@gmail.com
+    name = Olushola Akinmolayan
+
+[includeIf "gitdir:~/codebase/work/"]
+    path = .gitconfig-work
+
