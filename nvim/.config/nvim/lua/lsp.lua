@@ -68,8 +68,6 @@ local setup = function()
     map("n", "<leader>tr", [[<cmd>lua require("metals.tvp").reveal_in_tree()<CR>]])
     map("n", "<leader>st", [[<cmd>lua require("metals").toggle_setting("showImplicitArguments")<CR>]])
 
-    -- A lot of the servers I use won't support document_highlight or codelens,
-    -- so we juse use them in Metals
     api.nvim_create_autocmd("CursorHold", {
       callback = vim.lsp.buf.document_highlight,
       buffer = bufnr,
@@ -94,7 +92,6 @@ local setup = function()
     })
 
     -- nvim-dap
-    -- I only use nvim-dap with Scala, so we keep it all in here
     local dap = require("dap")
 
     dap.configurations.scala = {

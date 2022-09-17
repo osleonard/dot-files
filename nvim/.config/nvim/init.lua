@@ -23,7 +23,7 @@ local g = vim.g
 
 
 -- Leader map
-g.mapleader = ','
+g.mapleader = ","
 g.maplocalleader = ' '
 
 local f = require("functions")
@@ -51,8 +51,13 @@ global_opt.smartcase = true
 global_opt.clipboard = "unnamed"
 global_opt.completeopt = { "menuone", "noinsert", "noselect" }
 global_opt.scrolloff = 5
-global_opt.laststatus = 3
 global_opt.number = true
+global_opt.spell  = true
+global_opt.guifont = "Fira Code 14"
 
 cmd("colorscheme dracula")
+
+-- custom mappings 
+map("n", "<leader>v", " <C-w>v<C-w>l")
+map("n", "<leader>h", " <C-w>s<C-w>j")
 
