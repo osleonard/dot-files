@@ -6,9 +6,13 @@ alias k="kubectl"
 alias v="nvim"
 
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if [[ $(uname -m) == 'arm64' ]]; then 
+	eval "$(/opt/homebrew/bin/brew shellenv)"
+	[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh 
+else 
+	[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+fi
 
-[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
