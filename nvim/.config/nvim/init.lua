@@ -24,7 +24,6 @@ local g = vim.g
 
 -- Leader map
 g.mapleader = ","
-g.maplocalleader = ' '
 
 local f = require("functions")
 local map = f.map
@@ -38,7 +37,7 @@ require("lsp").setup()
 local indent = 2
 
 -- global
-global_opt.shortmess:remove("F"):append("c")
+--global_opt.shortmess:remove("F"):append("c")
 global_opt.termguicolors = true
 global_opt.hidden = true
 global_opt.showtabline = 1
@@ -60,4 +59,5 @@ cmd("colorscheme dracula")
 -- custom mappings 
 map("n", "<leader>v", " <C-w>v<C-w>l")
 map("n", "<leader>h", " <C-w>s<C-w>j")
+map("n", "<leader>b", " :buffers<CR>:buffer<Space>")
 
