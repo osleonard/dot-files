@@ -59,5 +59,4 @@ cmd("colorscheme dracula")
 -- custom mappings 
 map("n", "<leader>v", " <C-w>v<C-w>l")
 map("n", "<leader>h", " <C-w>s<C-w>j")
-map("n", "<leader>b", " :buffers<CR>:buffer<Space>")
 
