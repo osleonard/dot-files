@@ -25,6 +25,8 @@ local g = vim.g
 -- Leader map
 g.mapleader = ","
 
+g.netrw_banner = 0
+
 local f = require("functions")
 local map = f.map
 local opt = vim.opt
@@ -53,6 +55,12 @@ global_opt.scrolloff = 5
 global_opt.number = true
 global_opt.spell  = true
 global_opt.guifont = "Fira Code 14"
+
+vim.diagnostic.config({
+  virtual_text = false
+})
+vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]]
+
 
 cmd("colorscheme dracula")
 

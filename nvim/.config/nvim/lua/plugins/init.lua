@@ -34,6 +34,7 @@ require('packer').startup(function(use)
        "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
  }
+ use {"tpope/vim-vinegar"}
  use({
     "hrsh7th/nvim-cmp",
     requires = {
