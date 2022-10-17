@@ -157,6 +157,19 @@ local setup = function()
     group = nvim_metals_group,
   })
 
+  
+  
+ -- local nvim_rust_analyzer_group = api.nvim_create_augroup("rust-analyzer", {clear = true})
+ -- api.nvim_create_autocmd("FileType", {
+ --     pattern = { "rs", "toml" },
+ --     callback = function()
+ --       require("rust-analyzer").attach(
+
+ --       )
+ --     end
+ -- })
+
+
 
   lsp_config.jsonls.setup({
     on_attach = on_attach,
@@ -170,7 +183,7 @@ local setup = function()
   })
 
   -- These server just use the vanilla setup
-  local servers = { "bashls", "dockerls", "html", "tsserver", "yamlls", "gopls" }
+  local servers = { "bashls", "dockerls", "html", "tsserver", "yamlls", "gopls", "rust_analyzer" }
   for _, server in pairs(servers) do
     lsp_config[server].setup({ on_attach = on_attach })
   end

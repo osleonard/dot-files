@@ -39,7 +39,6 @@ require("lsp").setup()
 local indent = 2
 
 -- global
---global_opt.shortmess:remove("F"):append("c")
 global_opt.termguicolors = true
 global_opt.hidden = true
 global_opt.showtabline = 1
@@ -56,10 +55,26 @@ global_opt.number = true
 global_opt.spell  = true
 global_opt.guifont = "Fira Code 14"
 
+
+opt.shortmess = {
+  t = true, -- truncate file messages at start
+  A = true, -- ignore annoying swap file messages
+  o = true, -- file-read message overwrites previous
+  O = true, -- file-read message overwrites previous
+  T = true, -- truncate non-file messages in middle
+  f = true, -- (file x of x) instead of just (x of x
+  F = true, -- Don't give file info when editing a file, NOTE: this breaks autocommand messages
+  s = true,
+  c = true,
+  W = true, -- Don't show [w] or written when writing
+}
 vim.diagnostic.config({
   virtual_text = false
 })
-vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]]
+vim.cmd [[
+set signcolumn=yes
+autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})
+]]
 
 
 cmd("colorscheme dracula")

@@ -9,7 +9,7 @@ require('packer').startup(function(use)
   use {'sheerun/vim-polyglot'}
   use {'tpope/vim-dispatch', opt = true, cmd = {'Dispatch', 'Make', 'Focus', 'Start'}}
   use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}
-  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = require("plugins.treesitter").setup() }
   use {'fatih/vim-go',  run = ':GoUpdateBinaries' }
   use {'kyazdani42/nvim-web-devicons'}
   use {'dracula/vim', as = 'dracula'}
