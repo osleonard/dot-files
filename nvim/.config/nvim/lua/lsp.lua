@@ -7,7 +7,7 @@ local map = f.map
 local setup = function()
   local lsp_config = require("lspconfig")
   local bare_capabilities = vim.lsp.protocol.make_client_capabilities()
-  local capabilities = require("cmp_nvim_lsp").update_capabilities(bare_capabilities)
+  local capabilities = require("cmp_nvim_lsp").default_capabilities(bare_capabilities)
 
   lsp_config.util.default_config = vim.tbl_extend("force", lsp_config.util.default_config, {
     capabilities = capabilities,
@@ -59,8 +59,8 @@ local setup = function()
       "akka.stream.javadsl",
       "akka.http.javadsl",
     },
-    fallbackScalaVersion = "2.13.8",
-    serverVersion = "latest.snapshot",
+    fallbackScalaVersion = "2.13.10",
+    serverVersion = "1.0.0",
   }
 
   metals_config.init_options.statusBarProvider = "on"
@@ -156,20 +156,8 @@ local setup = function()
     end,
     group = nvim_metals_group,
   })
-
   
   
- -- local nvim_rust_analyzer_group = api.nvim_create_augroup("rust-analyzer", {clear = true})
- -- api.nvim_create_autocmd("FileType", {
- --     pattern = { "rs", "toml" },
- --     callback = function()
- --       require("rust-analyzer").attach(
-
- --       )
- --     end
- -- })
-
-
 
   lsp_config.jsonls.setup({
     on_attach = on_attach,
@@ -182,6 +170,14 @@ local setup = function()
     },
   })
 
+  lsp_config.tsserver.setup({
+    on_attach = on_attach,
+    root_dir = function (pattern)
+      local cwd  = vim.loop.cwd();
+      local root = util.root_pattern("package.json", "tsconfig.json", ".git")(pattern);
+      return root or cwd;
+    end
+  })
   -- These server just use the vanilla setup
   local servers = { "bashls", "dockerls", "html", "tsserver", "yamlls", "gopls", "rust_analyzer" }
   for _, server in pairs(servers) do

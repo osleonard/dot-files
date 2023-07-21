@@ -27,6 +27,7 @@ g.mapleader = ","
 
 g.netrw_banner = 0
 
+
 local f = require("functions")
 local map = f.map
 local opt = vim.opt
