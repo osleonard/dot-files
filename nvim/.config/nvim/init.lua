@@ -1,23 +1,16 @@
--- lets ensure packer is installed
-
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
-local packer_bootstrap = ensure_packer()
-
- if packer_bootstrap then
-    require('packer').sync()
- end
-
-local api = vim.api
 local cmd = vim.cmd
 local g = vim.g
 
@@ -35,7 +28,7 @@ local global_opt = vim.opt_global
 
 -- load plugins
 require("plugins")
-require("lsp").setup()
+--require("lsp").setup()
 
 local indent = 2
 
@@ -56,6 +49,7 @@ global_opt.number = true
 global_opt.spell  = true
 global_opt.guifont = "Fira Code 14"
 
+opt.mouse = 'a'
 
 opt.shortmess = {
   t = true, -- truncate file messages at start
@@ -78,7 +72,7 @@ autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=fals
 ]]
 
 
-cmd("colorscheme dracula")
+cmd("colorscheme catppuccin-mocha")
 
 -- custom mappings 
 map("n", "<leader>v", " <C-w>v<C-w>l")

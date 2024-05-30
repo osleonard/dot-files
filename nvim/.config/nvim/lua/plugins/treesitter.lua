@@ -1,6 +1,6 @@
 local setup = function()
  require("nvim-treesitter.configs").setup{
-   ensure_installed = {"lua", "rust", "toml", "scala" },
+   ensure_installed = {"markdown", "vimdoc", "lua", "rust", "toml", "scala" },
    highlight = {
     enable = true
   }
