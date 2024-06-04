@@ -1,3 +1,9 @@
+local g = vim.g
+local global_opt = vim.opt_global
+local map = vim.keymap.set
+local opt = vim.opt
+local cmd = vim.cmd
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({
@@ -9,28 +15,17 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     lazypath,
   })
 end
-vim.opt.rtp:prepend(lazypath)
+opt.rtp:prepend(lazypath)
 
-local cmd = vim.cmd
-local g = vim.g
-
+-- load plugins
+require("plugins")
+require("lsp").setup()
 
 -- Leader map
 g.mapleader = ","
 
+-- no banner on netrw
 g.netrw_banner = 0
-
-
-local f = require("functions")
-local map = f.map
-local opt = vim.opt
-local global_opt = vim.opt_global
-
--- load plugins
-require("plugins")
---require("lsp").setup()
-
-local indent = 2
 
 -- global
 global_opt.termguicolors = true
@@ -63,18 +58,15 @@ opt.shortmess = {
   c = true,
   W = true, -- Don't show [w] or written when writing
 }
-vim.diagnostic.config({
-  virtual_text = false
-})
-vim.cmd [[
-set signcolumn=yes
-autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})
-]]
-
 
 cmd("colorscheme catppuccin-mocha")
 
 -- custom mappings 
-map("n", "<leader>v", " <C-w>v<C-w>l")
-map("n", "<leader>h", " <C-w>s<C-w>j")
+map("n", "<leader>v", "<C-w>v<C-w>l")
+map("n", "<leader>h", "<C-w>s<C-w>j")
 
+-- TIP: Disable arrow keys in normal mode
+map('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
+map('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
+map('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
+map('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
