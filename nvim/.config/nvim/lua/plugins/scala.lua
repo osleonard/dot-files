@@ -42,7 +42,6 @@ return {
          showImplicitConversionsAndClasses = true,
          showInferredType = true,
          superMethodLensesEnabled = true,
-	 autoImportBuild = 'on',
 	 excludedPackages = {
            "akka.actor.typed.javadsl",
            "com.github.swagger.akka.javadsl",
@@ -50,14 +49,12 @@ return {
            "akka.http.javadsl",
          },
       }
-      metals_config.init_options = {
-        statusBarProvider = 'on',
-      }
+      metals_config.init_options.statusBarProvider = 'off'
       metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
       metals_config.on_attach = function(client, bufnr)
         -- your on_attach function
         require("metals").setup_dap()
-        vim.keymap.set("n", "<space>c", [[<cmd>lua require("telescope").extensions.metals.commands()<CR>]])
+	vim.keymap.set("n", "<space>c", [[<cmd>lua require("telescope").extensions.metals.commands()<CR>]])
         vim.keymap.set("v", "K", [[<Esc><cmd>lua require("metals").type_of_range()<CR>]])
         vim.keymap.set("n", "<leader>ws", [[<cmd>lua require("metals").hover_worksheet({ border = "single" })<CR>]])
         vim.keymap.set("n", "<leader>tt", [[<cmd>lua require("metals.tvp").toggle_tree_view()<CR>]])
