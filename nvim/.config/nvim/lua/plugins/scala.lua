@@ -42,6 +42,7 @@ return {
          showImplicitConversionsAndClasses = true,
          showInferredType = true,
          superMethodLensesEnabled = true,
+	 enableSemanticHighlighting = false,
 	 excludedPackages = {
            "akka.actor.typed.javadsl",
            "com.github.swagger.akka.javadsl",
