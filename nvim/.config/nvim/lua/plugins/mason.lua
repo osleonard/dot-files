@@ -7,7 +7,7 @@ local setup = function()
             package_uninstalled = "✗"
         }
     },
-   ensure_installed = { "lua_ls" },
+   ensure_installed = { "lua_ls", "ts_ls", "kotlin_lsp" },
  } 
 end
 
