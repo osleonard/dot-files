@@ -7,28 +7,16 @@ local cmd = vim.cmd
 local augroup = vim.api.nvim_create_augroup   -- Create/get autocommand group
 local autocmd = vim.api.nvim_create_autocmd   -- Create autocommand
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
-opt.rtp:prepend(lazypath)
-
--- load plugins
-require("plugins")
-require("lsp").setup()
+vim.loader.enable()
 
 -- Leader map
 g.mapleader = ","
 
 -- no banner on netrw
 g.netrw_banner = 0
+
+vim.pack.add{{ src = "https://github.com/catppuccin/nvim", name = "catppuccin" }}
+cmd("colorscheme catppuccin-nvim")
 
 -- global
 global_opt.termguicolors = true
@@ -62,11 +50,7 @@ opt.shortmess = {
   W = true, -- Don't show [w] or written when writing
 }
 
-cmd("colorscheme catppuccin-mocha")
 
--- custom mappings 
-map("n", "<leader>v", "<C-w>v<C-w>l")
-map("n", "<leader>h", "<C-w>s<C-w>j")
 
 -- TIP: Disable arrow keys in normal mode
 map('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
@@ -84,3 +68,15 @@ autocmd('Filetype', {
   },
   command = 'setlocal shiftwidth=2 tabstop=2'
 })
+
+-- load plugins
+require("plugins.telescope").setup()
+require("plugins.gitsigns")
+require("plugins.autopairs")
+require("plugins.treesitter")
+require("plugins.scala")
+require("plugins.mason")
+require("lsp")
+--require("lsp").setup()
+
+
