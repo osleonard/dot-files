@@ -10,7 +10,21 @@ require("mason").setup({})
 local servers = {
 --  dockerls = {},
 --  terraformls = {},
-  gopls = {},
+	gopls = {
+	  settings = {
+	    gopls = {
+	      gofumpt = true,
+	      staticcheck = true,
+	      usePlaceholders = true,
+	      analyses = {
+	        unusedparams = true,
+	        unusedwrite = true,
+	        nilness = true,
+	        shadow = true,
+	      },
+	    },
+	  },
+	},	
 --  ts_ls = {},
   kotlin_language_server = {},
 --  lua_ls = {

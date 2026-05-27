@@ -132,11 +132,3 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   group = nvim_metals_group,
 })
 
---vim.api.nvim_create_autocmd("FileType", {
---  pattern = { "*.worksheet.sc" },
---  callback = function()
---		 vim.lsp.inlay_hint.enable(true)
---  end,
---  group = nvim_metals_group,
---})
-
