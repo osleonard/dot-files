@@ -11,7 +11,9 @@ local function organize_imports(bufnr)
     return
   end
 
-  local params = vim.lsp.util.make_range_params()
+  local client = clients[1]
+  local encoding = client.offset_encoding or "utf-16"
+  local params = vim.lsp.util.make_range_params(0, encoding)
   params.context = {
     only = { "source.organizeImports" },
   }
@@ -26,10 +28,10 @@ local function organize_imports(bufnr)
   for client_id, res in pairs(result or {}) do
     for _, action in pairs(res.result or {}) do
       if action.edit then
-        local client = vim.lsp.get_client_by_id(client_id)
-        local encoding = client and client.offset_encoding or "utf-16"
+        local action_client = vim.lsp.get_client_by_id(client_id)
+        local action_encoding = action_client and action_client.offset_encoding or encoding
 
-        vim.lsp.util.apply_workspace_edit(action.edit, encoding)
+        vim.lsp.util.apply_workspace_edit(action.edit, action_encoding)
       end
     end
   end
