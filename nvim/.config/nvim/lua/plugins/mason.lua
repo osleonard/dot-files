@@ -26,7 +26,15 @@ local servers = {
 	  },
 	},	
 --  ts_ls = {},
-  kotlin_language_server = {},
+  kotlin_lsp = {
+		root_markers = {
+			"settings.gradle",
+    	"settings.gradle.kts",
+    	"pom.xml",
+    	"build.gradle",
+    	"build.gradle.kts",
+		}
+	},
 --  lua_ls = {
 --    settings = {
 --      Lua = {

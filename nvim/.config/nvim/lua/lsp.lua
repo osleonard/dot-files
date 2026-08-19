@@ -13,8 +13,9 @@ local function setup()
     callback = function(event)
       local bufnr = event.buf
 
-      local function map(keys, func, desc)
-        vim.keymap.set("n", keys, func, {
+      local function map(keys, func, desc, mode)
+				mode = mode or "n"
+        vim.keymap.set(mode, keys, func, {
           buffer = bufnr,
           desc = "LSP: " .. desc,
         })
@@ -45,7 +46,7 @@ local function setup()
       map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
       map("<C-space>", function()
         vim.lsp.completion.get()
-      end, "Available completions")
+      end, "Available completions", "i")
 
       local client = vim.lsp.get_client_by_id(event.data.client_id)
 
