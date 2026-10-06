@@ -31,6 +31,8 @@ dap.configurations.scala = {
 local metals_config = require("metals").bare_config()
 
 metals_config.settings = {
+  serverVersion = "2.0.0-M19",
+  serverProperties = { "-Xmx4g" },
   defaultBspToBuildTool = true,
   showImplicitArguments = true,
   showImplicitConversionsAndClasses = true,
@@ -58,6 +60,12 @@ metals_config.on_attach = function(client, bufnr)
   require("metals").setup_dap()
 
   local opts = { buffer = bufnr, silent = true }
+
+   vim.keymap.set("n", "gd", vim.lsp.buf.definition, {
+     buffer = bufnr,
+     silent = true,
+     desc = "Goto Definition (Metals, no Telescope)",
+   })
 
   vim.keymap.set(
     "n",
