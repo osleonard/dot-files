@@ -29,10 +29,10 @@ local servers = {
   kotlin_lsp = {
 		root_markers = {
 			"settings.gradle",
-    	"settings.gradle.kts",
-    	"pom.xml",
-    	"build.gradle",
-    	"build.gradle.kts",
+      "settings.gradle.kts",
+      "pom.xml",
+      "build.gradle",
+      "build.gradle.kts",
 		}
 	},
 --  lua_ls = {

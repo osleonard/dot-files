@@ -14,7 +14,7 @@ local function setup()
       local bufnr = event.buf
 
       local function map(keys, func, desc, mode)
-				mode = mode or "n"
+        mode = mode or "n"
         vim.keymap.set(mode, keys, func, {
           buffer = bufnr,
           desc = "LSP: " .. desc,
